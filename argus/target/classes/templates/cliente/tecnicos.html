@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Técnicos</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- ICONS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="mx-auto order-0">
+			<a class="navbar-brand mx-auto" href="/cliente/homepage">Argus Web</a>
+		</div>
+	</nav>
+	
+	<div class="container col-sm-6">
+		<div class="container rounded bg-dark text-white my-3" th:each="tecnico : ${tecs}">
+			<div class="row">
+				<div class="col-sm-6 my-3">
+					<h5><span th:text="${tecnico.area}"></span></h5>
+					<p><span th:text="${tecnico.user.nome}"></span></p>
+				</div>
+				<div class="col-sm-6 align-self-center">
+					<a th:href="@{/cliente/tecnico/{cpf}(cpf=${tecnico.id})}" class="text-white"><i class="material-icons float-right">arrow_forward_ios</i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

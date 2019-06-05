@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Deletar conta</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<div class="container text-center">
+		<div class="card my-3 text-justify p-3">
+			<h3 class="card-title">Apagar Conta</h3>
+			<div class="card-content text-center ml-3 mt-5">
+			
+				<!-- AVISO DO FORMULARIO -->
+				<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" th:if="${not #strings.isEmpty(erro)}">
+					<p><span th:text="${erro}"></span></p>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    		<span aria-hidden="true">&times;</span>
+			  		</button>
+				</div>
+				
+				<!-- FORMULÁRIO -->
+				<form class="form-group" method="post" action="/cliente/deleteaccount">
+					<label class="font-weight-bold" for="cpf">CPF:</label>
+					<input type="text" id="cpf" name="cpf" class="mb-3 form-control" required/>
+					<label class="font-weight-bold" for="cpf2">Repita o CPF:</label>
+					<input type="text" id="cpf2" name="cpf2" class="mb-3 form-control" required/>
+					<button class="btn btn-primary btn-block mt-3" type="button" data-toggle="modal" data-target="#confirmation">Apagar</button>
+					
+					<!-- MODAL -->
+					<div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="confirmationTitle" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal title" id="confirmationTitle">Você deseja mesmo excluir sua conta?</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="true">
+										<span aria-hidden="true">&times;</span>
+									</button> 
+								</div>
+								<div class="modal-body">
+									<p>O que o fez chegar aqui? Algo que fizemos e não gostou? Teve algum problema com um técnico? Aconteceu alguma coisa? Por favor, nos perdoe.</p>
+									<p>Siga em frente caso não nos queira mais, porém gostaríamos muito saber o que aconteceu. ;-;</p>
+								</div>
+								<div class="modal-footer">
+									<a href="#"><button type="button" class="btn btn-primary">Conte-nos o que aconteceu</button></a>
+									<button type="submit" class="btn btn-secondary">Deletar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

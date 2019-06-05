@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Argus Web | cadastro</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="navbar-collapse collapse w-100 order-1 order-md-0">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link text-white" href="/cadastroTecnico">Cadastre-se como técnico</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mx-auto order-0">
+			<a class="navbar-brand mx-auto" href="/">Argus Web</a>
+		</div>
+		<div class="navbar-collapse collapse w-100 order-3">
+		</div>
+	</nav>
+	
+	<div class="text-center container col-4 my-3">
+		<h3>Usufrua do Argus</h3>
+		<h5 class="font-weight-light">Cadastre-se e junte-se a nós!</h5>
+		<form class="text-justify form-group mt-3" action="/cadastro" method="post">
+			<label for="nome" class="font-weight-bold">Nome:</label>
+			<input type="text" id="nome" name="nome" class="form-control" required/>
+			
+			<label for="email" class="font-weight-bold mt-2">Email:</label>
+			<input type="text" id="email" name="email" class="form-control" required/>
+			
+			<label for="senha" class="font-weight-bold mt-2">Senha:</label>
+			<input type="password" id="senha" name="senha" class="form-control" required minlength="6"/>
+			
+			<label for="cpf" class="font-weight-bold mt-3">CPF:</label>
+			<input type="number" id="cpf" name="cpf" class="form-control" maxlength="11" minlength="11" required/>
+			
+			<div class="container ml-3 mt-2">
+				<input type="checkbox" id="accept" name="accept" class="form-check-input" required/>
+				<label for="accept" class="form-check-label">Li e Aceitos os <a href="#">Termos e Condições</a></label>
+			</div>
+			
+			<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" th:if="${not #strings.isEmpty(mensagem)}">
+				<p><span th:text="${mensagem}"></span></p>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    			<span aria-hidden="true">&times;</span>
+	  			</button>
+			</div>
+			
+			<button type="submit" class="btn btn-primary btn-block my-4">Cadastrar</button>
+			
+		</form>
+	</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

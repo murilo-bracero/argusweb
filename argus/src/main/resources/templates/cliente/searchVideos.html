@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Videos</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- ICONS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="w-100 order-1 order-md-0">
+		</div>
+		<div class="mx-auto order-0">
+			<a class="navbar-brand mx-auto" href="/cliente/homepage">Argus Web</a>
+		</div>
+		<div class="w-100 order-3">
+			<form action="/cliente/videos/" method="get">
+				<div class="w-50 input-group float-right">
+					<input type="text" class="form-control" name="tag"/>
+					<div class="input-group-append">
+						<button class="btn btn-outline-light" type="submit">Pesquisar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+ 		<h5 class="my-3">Pesquisas com a tag "<span th:text="${tag}"></span>"</h5>
+ 		<div class="container bg-light" >
+ 			<div class="card my-3 px-3 shadow-sm" th:each="video : ${videos}">
+ 				<div class="row">
+ 					<div class="container col-sm-auto py-1">
+ 						<iframe th:src="${video.url}" style="boder: 0;" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ 					</div>
+ 					<div class="container col-sm-auto py-1">
+ 						<h5><span th:text="${video.titulo}"></span></h5>
+ 						<p><span th:text="${video.canal}"></span></p>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+</body>
+</html>

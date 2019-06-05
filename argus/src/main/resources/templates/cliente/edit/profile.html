@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Editar perfil</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- ICONS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+
+.profile-head{
+	background-image: url("/images/galaxy_wpp.jpg");
+	-webkit-background-size:cover;
+	background-size:cover;
+	height:200px;
+}
+
+.profile-image{
+	position:relative;
+	top: -50px;
+	margin-bottom:-50px;
+	width:130px;
+	height:130px;
+}
+
+.profile-image img{
+	width:130px;
+	height:130px;
+	border:5px solid rgba(255, 255, 255,.5);
+}
+
+.overlay{
+	position: absolute;
+	width:130px;
+	height:130px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(99, 110, 109, 0.61);
+    border-radius:100%;
+    cursor: pointer;
+}
+
+.profile-content{
+	padding:5%;
+}
+
+
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="mx-auto order-0">
+			<a class="navbar-brand mx-auto" href="/cliente/homepage">Argus Web</a>
+		</div>
+	</nav>
+	<div class="container my-3">
+		<div class="row">  
+			<div class="container col-sm-8 text-center">
+				<div class="card">
+					<div class="profile-head card-img-top"></div>
+					<div class="align-self-center profile-image">
+						<img class="rounded-circle mb-2" th:src="${currentuser.getUser().getPerfiluri()}"/>
+						<div class="overlay" style="display:none;">
+							<a href="#" data-toggle="modal" data-target="#changeModal" class="text-white">
+								<i class="material-icons mt-5">edit</i>
+							</a>
+						</div>
+					</div>
+					<div class="profile-content text-justify">
+						 <form class="form-group" action="/cliente/edit/profile" method="post">
+						 	<label for="nome">Nome:</label>
+						 	<input class="form-control mb-1" type="text" id="nome" name="nome" th:value="${currentuser.getUser().getNome()}" required/>
+						 	<label for="email">Email:</label>
+						 	<input class="form-control mb-1" type="text" id="email" name="email" th:value="${currentuser.getUser().getEmail()}" required/>
+						 	
+						 	<!-- AVISO DO FORMULARIO -->
+							<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" th:if="${not #strings.isEmpty(erro)}">
+								<p><span th:text="${erro}"></span></p>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    					<span aria-hidden="true">&times;</span>
+			  					</button>
+							</div>
+							
+						 	<button class="float-right m-3 btn btn-outline-primary rounded-pill px-3" type="submit"><span class="font-weight-bold align-self-center">Editar</span></button>
+						 </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal para mudança de foto-->
+	<div class="modal fade" id="changeModal" tabindex="-1" role="dialog" aria-labelledby="changeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Escolha uma foto</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form method="post" enctype="multipart/form-data" action="/cliente/changeProfilePic">
+	        	<input class="form-control-file" type="file" id="pic" name="pic" accept=".jpg, .png, .jpeg" required/>
+	        	<button type="submit" class="btn btn-primary mt-3">Editar</button>
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.profile-image').hover(function(){
+			$('.overlay').css('display', 'block');
+			},
+			function(){
+				$('.overlay').css('display', 'none');
+				});
+		});
+</script>
+</body>
+</html>

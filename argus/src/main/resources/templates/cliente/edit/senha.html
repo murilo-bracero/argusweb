@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Mudar senha</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container text-center">
+		<div class="card my-3 text-justify p-3">
+			<h3 class="card-title">Mudar Senha</h3>
+			<div class="card-content text-center ml-3 mt-5">
+			
+				<!-- AVISO DO FORMULARIO -->
+				<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" th:if="${not #strings.isEmpty(erro)}">
+					<p><span th:text="${erro}"></span></p>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    		<span aria-hidden="true">&times;</span>
+			  		</button>
+				</div>
+				
+				<!-- FORMULÁRIO -->
+				<form class="form-group" method="post" action="/cliente/changepsswrd">
+					<label for="old_psswrd" class="font-weight-bold">Digite a senha antiga:</label>
+					<input type="password" id="old_psswrd" name="old_psswrd" class="mb-3 form-control" required minlength="6"/>
+					<hr>
+					<label for="new-psswrd" class="font-weight-bold">Digite a nova senha:</label>
+					<input type="password" id="new_psswrd" name="new_psswrd" class="mb-2 form-control" required minlength="6"/>
+					
+					<label for="new-psswrd2" class="font-weight-bold">Repita a nova senha:</label>
+					<input type="password" id="new_psswrd2" name="new_psswrd2" class="mb-2 form-control" required minlength="6"/>
+					
+					<button class="btn btn-primary btn-block my-3" type="submit">Mudar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

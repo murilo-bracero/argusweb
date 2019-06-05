@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Ver Tecnico</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- ICONS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+	.gradient-red{
+		background-image: linear-gradient(to right, #D32F2F, #F44336) !important; 
+	}
+	
+	.gradient-blue{
+		background-image: linear-gradient(to right, #120c7c, #00d4ff) !important; 
+	}
+</style>
+</head>
+<body>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="mx-auto order-0">
+			<a class="navbar-brand mx-auto" href="/cliente/homepage">Argus Web</a>
+		</div>
+	</nav>
+	
+	<div class="container-fluid text-white mt-3 w-100 bg-dark pt-3 pb-5">
+		<h3 class="mb-3 text-center">Técnico</h3>
+		<div class="row">
+			<div class="container float-left mt-2">
+				<h4 class="font-weight-bold">Area: <span class="font-weight-normal" th:text="${tecnico.area}"></span></h4>
+				<h5 class="font-weight-bold">Nome: <span class="font-weight-normal" th:text="${tecnico.user.nome}"></span></h5>
+				<h5 class="font-weight-bold">Email: <span class="font-weight-normal" th:text="${tecnico.user.email}"></span></h5>
+				<h5 class="font-weight-bold">Contato: <span class="font-weight-normal" th:text="${tecnico.telefone}"></span></h5>
+			</div>
+			<img class="rounded-circle bg-light p-2 mb-2 float-right mr-4" th:src="${tecnico.perfiluri}" style="width:125px; height:125px;"/>
+		</div>
+	</div>
+	<div id="degrade" class="container-fluid bg-dark text-white w-100 py-3">
+		<div class="row">
+			<div class="container text-center">
+				<a class="text-white" th:href="@{/cliente/tecnico/add/{id}(id=${tecnico.id})}"><i class="material-icons"><span id="fav" th:text="${fav_icon}"></span></i></a>
+			</div>
+		</div>
+	</div>
+	
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function(){
+
+		var favorite = $("#fav");
+		var degrade = $("#degrade");
+		
+		if(favorite.text() == "favorite"){
+			degrade.removeClass("bg-dark");
+			degrade.addClass("gradient-red");
+		}else{
+			degrade.removeClass("bg-dark");
+			degrade.addClass("gradient-blue");
+		}
+
+		favorite.on("click", function(){
+			if(favorite.text() == "favorite"){
+				degrade.removeClass("gradient-blue");
+				degrade.addClass("gradient-red");
+			}else{
+				degrade.removeClass("gradient-red");
+				degrade.addClass("gradient-blue");
+			}
+		});
+				
+		});
+</script>
+</body>
+</html>

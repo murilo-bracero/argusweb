@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cadastre-se</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="navbar-collapse collapse w-100 order-1 order-md-0">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link text-white" href="/cadastro">Cadastre-se como cliente</a>
+				</li>
+			</ul>
+		</div>
+		<div class="mx-auto order-0">
+			<a class="navbar-brand mx-auto" href="/">Argus Web</a>
+		</div>
+		<div class="navbar-collapse collapse w-100 order-3">
+		</div>
+	</nav>
+	
+	<div class="text-center container col-4 my-3">
+		<h3>Faça parte do Argus</h3>
+		<h5 class="font-weight-light">Cadastre-se e junte-se a nossa equipe de Técnicos!</h5>
+	</div>
+	<div class="container col-8 my-3">
+		<form class="text-justify form-group mt-3" action="/cadastroTecnico" method="post" th:object="${cliente}">
+			<label for="nome" class="font-weight-bold">Nome:</label>
+			<input type="text" id="nome" name="nome" class="form-control" required/>
+			
+			<label for="email" class="font-weight-bold mt-2">Email:</label>
+			<input type="text" id="email" name="email" class="form-control" required/>
+			
+			<label for="senha" class="font-weight-bold mt-2">Senha:</label>
+			<input type="password" id="senha" name="senha" class="form-control" required minlength="6"/>
+			
+			<label for="cpf" class="font-weight-bold mt-3">CPF:</label>
+			<input type="number" id="cpf" name="cpf" class="form-control" maxlength="11" minlength="11" required/>
+			
+			<label for="area" class="font-weight-bold mt-3">Área de atuação:</label>
+			<input type="text" id="area" name="area" class="form-control" required/>
+			
+			<label for="expediente" class="font-weight-bold mt-3">Expediente:</label>
+			<input type="text" id="expediente" name="expediente" class="form-control" maxlength="11" minlength="11" required/>
+			
+			<label for="telefone" class="font-weight-bold mt-3">Telefone:</label>
+			<input type="number" id="telefone" name="telefone" class="form-control" maxlength="11" minlength="10" required/>
+			
+			<label for="logradouro" class="font-weight-bold mt-3">Endereço:</label>
+			<input type="text" id="logradouro" name="logradouro" class="form-control"/>
+				
+			<div class="form-row">	
+				<div class="form-group col-md-6">
+					<label for="numero" class="font-weight-bold mt-3">Número:</label>
+					<input type="number" id="numero" name="numero" class="form-control"/>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="complemento" class="font-weight-bold mt-3">Complemento:</label>
+					<input type="text" id="complemento" name="complemento" class="form-control"/>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="cidade" class="font-weight-bold mt-3">Cidade:</label>
+					<input type="text" id="cidade" name="cidade" class="form-control"/>
+				</div>
+				<div class="form-group col-md-4">
+					<label for="cep" class="font-weight-bold mt-3">CEP:</label>
+					<input type="number" id="cep" name="cep" class="form-control"/>
+				</div>
+				<div class="form-group col-md-2">
+					<label for="estado" class="font-weight-bold mt-3">Estado:</label>
+					<select id="estado" name="estado" class="form-control">
+						<option th:each="estado : ${estados}"><span th:text="${estado}"></span></option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="container ml-3 mt-2">
+				<input type="checkbox" id="accept" name="accept" class="form-check-input" required/>
+				<label for="accept" class="form-check-label">Li e Aceitos os <a href="#">Termos e Condições</a></label>
+			</div>
+			
+			<div class="alert alert-danger alert-dismissible fade show mt-3" role="alert" th:if="${not #strings.isEmpty(erro)}">
+				<p><span th:text="${erro}"></span></p>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    			<span aria-hidden="true">&times;</span>
+	  			</button>
+			</div>
+			
+			<button type="submit" class="btn btn-primary btn-block my-4">Cadastrar</button>
+			
+		</form>
+	</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
