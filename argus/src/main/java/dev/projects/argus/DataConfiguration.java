@@ -17,8 +17,8 @@ public class DataConfiguration {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost/argusweb?serverTimezone=UTC");
-		dataSource.setUsername("root");
-		dataSource.setPassword("vertrigo");
+		dataSource.setUsername("{database login}");
+		dataSource.setPassword("{database password}");
 		return dataSource;
 	}
 	
