@@ -2,7 +2,7 @@
 
 O Sistema Aplicativo Web que tem como prioridade melhorar a interação entre cliente e técnico, não importa o quão leigo o cliente é ou o quão técnico é o profissional, a missão do Argus é ajudar.
 
-The web app system has a priority of turn better the interaction between Costumers and Computer Technicians. Doesn't matter how layman is the Costumer or how complex is the professional, the Argus mission is help.
+The web app system has a priority of turn better the interaction between Costumers and Computer Technicians. Doesn't matter how layman is the Costumer or how complex is the professional, Argus are here to help.
 
 ### O que isso faz?
 
